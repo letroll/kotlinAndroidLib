@@ -36,7 +36,7 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="KotlinAndroidLib" />
+    <orderEntry type="module" module-name="kotlinAndroidLib" />
     <orderEntry type="module-library">
       <library name="kotlin-runtime">
         <CLASSES>
