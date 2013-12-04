@@ -2,5 +2,6 @@
 .idea/workspace.xml
 local.properties
 lib/kotlin-runtime.jar
+lib/kotlin-runtime-sources.jar
 gen
 out

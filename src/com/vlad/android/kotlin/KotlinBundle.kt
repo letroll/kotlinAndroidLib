@@ -21,7 +21,7 @@ public inline fun Bundle(capacity: Int, body: Bundle.() -> Unit): Bundle {
 }
 
 public inline fun Bundle(b: Bundle?, body: Bundle.() -> Unit): Bundle {
-    val bundle = Bundle(b)
+    val bundle = if(b != null) Bundle(b) else Bundle()
     bundle.body()
     return bundle
 }

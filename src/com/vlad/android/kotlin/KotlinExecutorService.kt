@@ -8,9 +8,9 @@ public inline fun ExecutorService.execute(action: () -> Unit): Unit {
     execute(runnable(action))
 }
 
-public inline fun ExecutorService.submit<T>(action: () -> T?): Future<out T>? {
+public inline fun ExecutorService.submit<T>(action: () -> T): Future<out T>? {
     return submit(object : Callable<T> {
-        public override fun call(): T? = action()
+        public override fun call(): T = action()
     })
 }
 

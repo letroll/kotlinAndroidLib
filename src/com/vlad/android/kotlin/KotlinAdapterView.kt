@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView.OnItemLongClickListener
 
-public inline fun OnItemClickListener(action: (AdapterView<out Adapter?>?, View?, Int, Long) -> Unit): OnItemClickListener? {
+public inline fun OnItemClickListener(action: (AdapterView<out Adapter>, View, Int, Long) -> Unit): OnItemClickListener {
     return object : OnItemClickListener {
-        public override fun onItemClick(p0: AdapterView<out Adapter?>?, p1: View?, p2: Int, p3: Long) {
-            action(p0, p1, p2, p3)
+        override fun onItemClick(parent: AdapterView<out Adapter?>?, view: View?, position: Int, id: Long) {
+            action(parent as AdapterView<out Adapter>, view!!, position, id)
         }
     }
 }

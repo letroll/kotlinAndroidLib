@@ -15,26 +15,26 @@ public inline fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit):
     }
 }
 
-public inline fun SQLiteDatabase.query<T>(distinct: Boolean, table: String?, columns: Array<String>? = null, selection: String? = null,
+public inline fun SQLiteDatabase.query<T>(distinct: Boolean, table: String, columns: Array<String>? = null, selection: String? = null,
                                selectionArgs: Array<String>? = null, groupBy: String? = null, having: String? = null, orderBy: String? = null,
                                limit: String? = null, create: Cursor.() -> T): MutableCollection<T> {
     return query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
-public inline fun SQLiteDatabase.queryWithFactory<T>(cursorFactory: CursorFactory?, distinct: Boolean, table: String?,
+public inline fun SQLiteDatabase.queryWithFactory<T>(cursorFactory: CursorFactory?, distinct: Boolean, table: String,
                                 columns: Array<String>? = null, selection: String? = null, selectionArgs: Array<String>? = null,
                                 groupBy: String? = null, having: String? = null, orderBy: String? = null, limit: String? = null,
                                 create: Cursor.() -> T): Collection<out T> {
     return queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
-public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String>?, selection: String?,
+public inline fun SQLiteDatabase.query<T>(table: String, columns: Array<String>?, selection: String?,
                                           selectionArgs: Array<String>?, groupBy: String?, having: String?, orderBy: String?,
-                                          limit: String?, create: Cursor.() -> T?): MutableCollection<T?> {
+                                          limit: String?, create: Cursor.() -> T): MutableCollection<T> {
     return query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
-public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String>?, selection: String?,
+public inline fun SQLiteDatabase.query<T>(table: String, columns: Array<String>?, selection: String?,
                                           selectionArgs: Array<String>?, groupBy: String?, having: String?, orderBy: String?,
                                           create: Cursor.() -> T): MutableCollection<T> {
     return query(table, columns, selection, selectionArgs, groupBy, having, orderBy).mapAndClose(create)

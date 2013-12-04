@@ -11,7 +11,7 @@ public inline fun Intent(body: Intent.() -> Unit): Intent {
 }
 
 public inline fun Intent(o: Intent?, body: Intent.() -> Unit): Intent {
-    val intent = Intent(o)
+    val intent = if(o != null) Intent(o) else Intent()
     intent.body()
     return intent
 }

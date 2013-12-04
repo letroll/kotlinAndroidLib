@@ -2,8 +2,8 @@ package com.vlad.android.kotlin
 
 import java.util.concurrent.Callable
 
-public inline fun callable<T>(action: () -> T?): Callable<out T> {
+public inline fun callable<T>(action: () -> T): Callable<out T> {
     return object : Callable<T> {
-        public override fun call(): T? = action()
+        public override fun call(): T = action()
     }
 }

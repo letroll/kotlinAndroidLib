@@ -6,10 +6,10 @@ import android.widget.TextView.OnEditorActionListener
 
 public inline fun OnEditorActionListener(action: (TextView?, Int, KeyEvent?) -> Boolean): OnEditorActionListener {
     return object : OnEditorActionListener {
-        public override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean = action(p0, p1, p2)
+        override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?) = action(v, actionId, event)
     }
 }
 
-public inline fun TextView.setOnEditorActionListener(action: (TextView?, Int, KeyEvent?) -> Boolean): Unit {
+public inline fun TextView.setOnEditorActionListener(action: (TextView?, Int, KeyEvent?) -> Boolean) {
     setOnEditorActionListener(OnEditorActionListener(action))
 }

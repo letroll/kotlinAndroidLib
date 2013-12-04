@@ -10,6 +10,6 @@ public inline fun Handler.postDelayed(delayMillis: Long, action: () -> Unit): Bo
 
 public inline fun Handler(handleMessage: (Message) -> Boolean): Handler {
     return Handler(object : Handler.Callback {
-        public override fun handleMessage(p0: Message?) = if (p0 == null) false else handleMessage(p0)
+        override fun handleMessage(msg: Message?) = if (msg == null) false else handleMessage(msg)
     })
 }
