@@ -5,7 +5,6 @@ Helps not to write boilerplate code with instantiating abstract or interfaces in
 The purpose of the library is to save time of writing code using Android SDK wrapping as much as possible
 common functionality.
 
-The library uses one of the coolest feature of the Kotlin language `inline` almost everywhere, that prevents overhead code.
 
 Warning
 -------
@@ -17,19 +16,27 @@ Linking to Android project
 --------------------------
 
 1. Create regular or use existing Android project in IDEA
-2. Select `File` from menu and click on `Project Structure...`
-3. Select `Libraries` section and add new Java library
-4. Choose the source `src` folder of kotlinAndroidLib and click `Ok`
-5. Choose category `sources` and click `Ok`
-6. Select and name the library `kotlinAndroidLib`
-7. Add new file to the library `^N` and choose classes.jar of kotlinAndroidLib
-8. Add import to your kotlin files in the android project `import com.vlad.android.kotlin.*`
+2. Clone this project in the parent folder of your project
+3. Write in the file setting.gradle:
+
+```
+include ':kotlinandroidlib'
+project(':kotlinandroidlib').projectDir=new File('../kotlinAndroidLib/app')
+```
+
+4. Write in the module build.gradle in Android dependencies:
+
+```
+compile project(':kotlinandroidlib')
+```
+
+5. do a gradle Sync and voila!
 
 Usage
 -----
 
 Small example of usage most of the functions and also some examples like how to create Parcelable.
-See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
+See [Sample Activity](https://github.com/letroll/kotlinAndroidLib/blob/master/SampleActivity.kt)
 
 * `findViewById` replacement for Activity and View:
 
@@ -246,3 +253,8 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
         async {
             // some code here
         }
+
+Credits
+-------
+[Vladimir Lichonos](https://github.com/vladlichonos)
+[Julien Quiévreux](https://github.com/letroll)
